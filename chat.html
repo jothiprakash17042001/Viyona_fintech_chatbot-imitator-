@@ -5,27 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f4; }
-        #chatbox { width: 300px; height: 520px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #ccc; padding: 20px; position: fixed; bottom: 30px; right: 40px; display: none; z-index: 1001; overflow: hidden; border: 2px solid #0078d7; }
-        .message { margin: 10px 0; }
+        body { font-family: Arial, sans-serif; background: #ffc5f1; }
+        #chatbox { 
+            width: 300px; 
+            height: 520px; 
+            margin: 40px auto; 
+            background: #fff; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px #ccc; 
+            padding: 12px; 
+            position: fixed; 
+            bottom: 10px; 
+            right: 40px; 
+            display: none; 
+            z-index: 1001; 
+            overflow: hidden; 
+            border: 2px solid #0078d7;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .message { margin: 20px 0; }
         .bot { color: #333; }
         .user { color: #0078d7; text-align: right; }
-        #options { margin-top: 10px; }
-        .option-btn { margin: 5px 5px 0 0; padding: 8px 16px; border: none; border-radius: 4px; background: #0078d7; color: #fff; cursor: pointer; }
+        #options { 
+            margin-top: 10px; 
+            margin-bottom: 1%px; /* space for input row */ 
+        }
+        .option-btn { 
+            margin: 5px 5px 0 0; 
+            padding: 8px 15px; 
+            border: none; 
+            border-radius: 4px; 
+            background: #0078d7; 
+            color: #fff; 
+            cursor: pointer; 
+        }
         .option-btn:hover { background: #005fa3; }
-        #user-input { width: 60%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
-        #send-btn { padding: 8px 16px; border: none; border-radius: 4px; background: #0078d7; color: #fff; cursor: pointer; }
-        #chatbot-icon { position: fixed; bottom: 20px; right: 40px; width: 56px; height: 56px; background: #0078d7; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 8px #ccc; z-index: 1002; }
+        #user-input { 
+            width: 71%; 
+            padding: 8px; 
+            border-radius: 4px; 
+            border: 1px solid #ccc; 
+        }
+        #send-btn { 
+            padding: 8px 16px; 
+            margin-left: 8px;
+            border: none; 
+            border-radius: 4px; 
+            background: #0078d7; 
+            color: #fff; 
+            cursor: pointer; 
+        }
+        #chatbot-icon { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 40px; 
+            width: 56px; 
+            height: 56px; 
+            background: #0078d7; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            box-shadow: 0 2px 8px #ccc; 
+            z-index: 1002; 
+        }
         #chatbot-icon:hover { background: #005fa3; }
-        #close-chat { position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 20px; color: #888; cursor: pointer; }
+        #close-chat { 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            background: transparent; 
+            border: none; 
+            font-size: 20px; 
+            color: #888; 
+            cursor: pointer; 
+        }
         #close-chat:hover { color: #d00; }
-        #messages { height: 350px; max-height: 350px; overflow-y: auto; overflow-x: auto; direction: ltr; background: #fafbfc; padding-right: 8px; }
+        #messages { 
+            height: 350px; 
+            max-height: 350px; 
+            overflow-y: auto; 
+            overflow-x: auto; 
+            direction: ltr; 
+            background: #fafbfc; 
+            padding-right: 8px; 
+            margin-bottom: 60px; /* space for input row */ 
+        }
         #messages::-webkit-scrollbar { width: 10px; background: #f4f4f4; }
-        #messages::-webkit-scrollbar-thumb { background: #ccc; border-radius: 5px; }
+        #messages::-webkit-scrollbar-thumb { background: #cccccc; border-radius: 5px; }
         #messages { scrollbar-width: thin; scrollbar-color: #ccc #f4f4f4; }
+        .chatbox-input-row {
+            display: flex;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: #fff;
+            padding: 8px 12px 12px 12px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
+    
+     <img src="/static/vlogo.svg" alt="Chatbot Logo" style="width:30%;height:30%;display:block;margin:auto;padding-top:10%;" /> 
     <div id="chatbot-icon" title="Open Chatbot">
         <img src="/static/logo.png" alt="Chatbot Logo" style="width:32px;height:32px;display:block;margin:auto;" />
     </div>
@@ -33,13 +119,13 @@
         <button id="close-chat" title="Close">&times;</button>
         <div id="messages"></div>
         <div id="options"></div>
-        <div style="margin-top:10px;">
+        <div class="chatbox-input-row">
             <input type="text" id="user-input" placeholder="Type your message...">
             <button id="send-btn">Send</button>
         </div>
     </div>
     <script>
-        async function sendMessage(message) {
+           async function sendMessage(message) {
             const response = await fetch('/chat', { 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -48,7 +134,7 @@
             return response.json();
         }
 
-        function addMessage(text, sender) {
+        function addMessage(text, sender, links) {
             const msgDiv = document.createElement('div');
             msgDiv.className = 'message ' + sender;
             if (sender === 'bot') {
@@ -69,6 +155,32 @@
                 container.appendChild(logo);
                 container.appendChild(textSpan);
                 msgDiv.appendChild(container);
+                // Add links if present, in a separate block
+                if (links && links.length) {
+                    const linksBlock = document.createElement('div');
+                    linksBlock.style.marginLeft = '32px';
+                    linksBlock.style.marginTop = '8px';
+                    links.forEach(link => {
+                        const linkElem = document.createElement('a');
+                        linkElem.href = link.value;
+                        linkElem.textContent = link.title || link.value;
+                        linkElem.target = (link.openInNewTab === false ? '_self' : '_blank');
+                        linkElem.style.display = 'block';
+                        linkElem.style.color = '#0078d7';
+                        linkElem.style.textDecoration = 'underline';
+                        linkElem.style.cursor = 'pointer';
+                        linkElem.rel = 'noopener noreferrer';
+                        // Fallback: open in new tab on click (for dynamic anchors)
+                        linkElem.addEventListener('click', function(e) {
+                            if (link.openInNewTab !== false) {
+                                e.preventDefault();
+                                window.open(link.value, '_blank', 'noopener');
+                            }
+                        });
+                        linksBlock.appendChild(linkElem);
+                    });
+                    msgDiv.appendChild(linksBlock);
+                }
             } else {
                 msgDiv.textContent = text;
             }
@@ -76,7 +188,24 @@
             document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
         }
 
+        async function handleUserInput(input) {
+            document.getElementById('user-input').value = '';
+            const data = await sendMessage(input);
+            console.log('handleUserInput received:', data); // Debug log
+            if (data.bot) addMessage(data.bot, 'bot', data.links);
+            // If there is a second_line, show it after a delay, then show options
+            if (data.second_line) {
+                setTimeout(() => {
+                    addMessage(data.second_line, 'bot');
+                    showOptions(data.options); // Show options immediately after second line
+                }, 800); // Show second line after 800ms
+            } else {
+                showOptions(data.options);
+            }
+        }
+
         function showOptions(options) {
+            // Show options as received from backend, no extra Back button, no comment
             const optionsDiv = document.getElementById('options');
             optionsDiv.innerHTML = '';
             if (options && options.length) {
@@ -94,13 +223,6 @@
             }
         }
 
-        async function handleUserInput(input) {
-            document.getElementById('user-input').value = '';
-            const data = await sendMessage(input);
-            if (data.bot) addMessage(data.bot, 'bot');
-            showOptions(data.options);
-        }
-
         document.getElementById('send-btn').onclick = () => {
             const input = document.getElementById('user-input').value;
             if (input.trim()) {
@@ -113,14 +235,31 @@
         });
 
         // Initial welcome message
-        window.onload = () => {
-            // Don't show chatbox on load
-        };
+        window.addEventListener('DOMContentLoaded', () => {
+            // Always reset chatbox and icon visibility on page load
+            const chatbox = document.getElementById('chatbox');
+            const chatbotIcon = document.getElementById('chatbot-icon');
+            const messages = document.getElementById('messages');
+            const options = document.getElementById('options');
+            if (chatbox && chatbotIcon && messages && options) {
+                chatbox.style.display = 'none';
+                chatbotIcon.style.display = 'flex';
+                messages.innerHTML = '';
+                options.innerHTML = '';
+                messages.scrollTop = 0;
+            }
+        });
         // Show chatbox when icon is clicked
         document.getElementById('chatbot-icon').onclick = () => {
             document.getElementById('chatbox').style.display = 'block';
             document.getElementById('chatbot-icon').style.display = 'none';
-            handleUserInput('');
+            // Clear previous messages and options for a fresh start
+            document.getElementById('messages').innerHTML = '';
+            document.getElementById('options').innerHTML = '';
+            handleUserInput(''); // Immediately show welcome/options
+            setTimeout(() => {
+                document.getElementById('user-input').focus();
+            }, 100);
         };
         // Hide chatbox when close button is clicked
         document.getElementById('close-chat').onclick = () => {
