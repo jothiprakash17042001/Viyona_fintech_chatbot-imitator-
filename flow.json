@@ -84,7 +84,7 @@
             "suggestionPrompt": ""
           },
           "status": "ACTIVE",
-          "label": "Our Virtual Account Solutions simplify payment collections by providing unique virtual account numbers for each customer. This ensures seamless payment tracking, automatic reconciliation, and reduces manual effort for businesses.\nTo learn more about how Virtual Account Solutions can enhance your payment processes",
+          "label": "Our Virtual Account Solutions simplify payment collections by providing unique virtual account numbers for each customer. This ensures seamless payment tracking, automatic reconciliation, and reduces manual effort for businesses.\nTo learn more about how Virtual Account Solutions can enhance your payment processes.Enter the back  go  to the main menu or submit Details.",
           "icon": "",
           "source": "",
           "example": "",
@@ -341,7 +341,7 @@
             "suggestionPrompt": ""
           },
           "status": "ACTIVE",
-          "label": "PayIn Solutions by Viyona Fintech offer seamless integration for businesses to accept payments efficiently from multiple channels. Our solutions are designed to handle large volumes of transactions securely, providing a reliable gateway for various payment methods, including UPI and cards.\nTo explore more about how our PayIn Solutions can benefit your business",
+          "label": "PayIn Solutions by Viyona Fintech offer seamless integration for businesses to accept payments efficiently from multiple channels. Our solutions are designed to handle large volumes of transactions securely, providing a reliable gateway for various payment methods, including UPI and cards.\nTo explore more about how our PayIn Solutions can benefit your business. Enter the back go to  the main menu or submit Details.",
           "icon": "",
           "source": "",
           "example": "",
@@ -414,7 +414,7 @@
             "suggestionPrompt": ""
           },
           "status": "ACTIVE",
-          "label": "Viyona Fintech's PayOut Solutions provide a fast and secure way to manage bulk disbursements, enabling businesses to send payments directly to bank accounts or digital wallets. Whether it's vendor payments, employee salaries, or refunds, our PayOut system ensures smooth and reliable transactions.\nTo learn more about how our PayOut Solutions can streamline your business payments",
+          "label": "Viyona Fintech's PayOut Solutions provide a fast and secure way to manage bulk disbursements, enabling businesses to send payments directly to bank accounts or digital wallets. Whether it's vendor payments, employee salaries, or refunds, our PayOut system ensures smooth and reliable transactions.\nTo learn more about how our PayOut Solutions can streamline your business payments.Enter the back to go  the main menu or submit Details.",
           "icon": "",
           "source": "",
           "example": "",
@@ -487,7 +487,7 @@
             "suggestionPrompt": ""
           },
           "status": "ACTIVE",
-          "label": "Our Virtual Account Solutions simplify payment collections by providing unique virtual account numbers for each customer. This ensures seamless payment tracking, automatic reconciliation, and reduces manual effort for businesses.\nTo learn more about how Virtual Account Solutions can enhance your payment processes",
+          "label": "Our Virtual Account Solutions simplify payment collections by providing unique virtual account numbers for each customer. This ensures seamless payment tracking, automatic reconciliation, and reduces manual effort for businesses.\nTo learn more about how Virtual Account Solutions can enhance your payment processes.Enter the back to go  the main menu or submit Details.",
           "icon": "",
           "source": "",
           "example": "",
@@ -560,7 +560,7 @@
             "suggestionPrompt": ""
           },
           "status": "ACTIVE",
-          "label": "UPI Solutions enable businesses to accept real-time payments directly from customers' bank accounts through a unified and seamless platform. With instant transactions and wide adoption, UPI is a powerful tool for boosting payment efficiency and customer satisfaction.\nTo learn more about how UPI Solutions can enhance your payment system",
+          "label": "UPI Solutions enable businesses to accept real-time payments directly from customers' bank accounts through a unified and seamless platform. With instant transactions and wide adoption, UPI is a powerful tool for boosting payment efficiency and customer satisfaction.\nTo learn more about how UPI Solutions can enhance your payment system.Enter the back to go back to the main menu or submit Details.",
           "icon": "",
           "source": "",
           "example": "",
@@ -633,7 +633,7 @@
             "suggestionPrompt": ""
           },
           "status": "ACTIVE",
-          "label": "Connected Banking Solutions offer businesses the ability to integrate banking services directly into their platforms, providing seamless access to payments, transfers, and account management. This empowers companies to streamline their financial operations and offer enhanced services to their users.\nTo explore how Connected Banking Solutions can transform your business",
+          "label": "Connected Banking Solutions offer businesses the ability to integrate banking services directly into their platforms, providing seamless access to payments, transfers, and account management. This empowers companies to streamline their financial operations and offer enhanced services to their users.\nTo explore how Connected Banking Solutions can transform your business.Enter the back to go  the main menu or submit Details.",
           "icon": "",
           "source": "",
           "example": "",
@@ -706,7 +706,7 @@
             "suggestionPrompt": ""
           },
           "status": "ACTIVE",
-          "label": "We are a leading fintech company focused on providing innovative payment solutions, including PayIn, Payout, UPI, and Connected Banking. Our mission is to revolutionize the way businesses handle payments, offering seamless, secure, and scalable solutions tailored to various industries.\nTo learn more about who we are and what we do",
+          "label": "We are a leading fintech company focused on providing innovative payment solutions, including PayIn, Payout, UPI, and Connected Banking. Our mission is to revolutionize the way businesses handle payments, offering seamless, secure, and scalable solutions tailored to various industries.\nTo learn more about who we are and what we do.Enter the back to go  the main menu or submit Details",
           "icon": "",
           "source": "",
           "example": "",
@@ -779,7 +779,7 @@
             "suggestionPrompt": ""
           },
           "status": "ACTIVE",
-          "label": "Join our growing team today!  to explore our available positions.",
+          "label": "Join our growing team today!  to explore our available positionsEnter the back to go  the main menu or submit Details.",
           "icon": "",
           "source": "",
           "example": "",
@@ -882,7 +882,596 @@
           "queriesToHandle": "10",
           "validation": false,
           "next": {
-            "type": "question",
+            "type": "",
+            "target": ""
+          },
+          "appointmentHandler": "google",
+          "_id": "5f33e8a0dc169947560501ab",
+          "id": "1ff29fbe-bdae-4790-9751-739e04fdbcbc",
+          "type": "button",
+          "name": "button",
+          "options": [
+            {
+              "actionBasedChatResponse": {
+                "tagIds": [],
+                "status": "OPEN",
+                "isSubscriber": true
+              },
+              "type": "button",
+              "smartKeywords": [],
+              "keywordType": "CONTAIN",
+              "value": "Submit Details",
+              "_id": "672df42d3550526a802c8e8b",
+              "id": "c14349b6-e562-4805-9c16-b2beea1da4de",
+              "next": {
+                "type": "name",
+                "target": "75604f00-b1d9-4a03-ab81-d1d08b7f85bb"
+              }
+            },
+            {
+              "actionBasedChatResponse": {
+                "tagIds": [],
+                "status": "OPEN",
+                "isSubscriber": true
+              },
+              "type": "button",
+              "smartKeywords": [],
+              "keywordType": "CONTAIN",
+              "value": "Main Menu",
+              "_id": "672df61d3550526a802c8f11",
+              "id": "d43d7394-ac6b-4f33-9688-53b411abfb1b",
+              "next": {
+                "type": "button",
+                "target": "0b8a06f4-038b-4046-a11c-f89a6f6992b7"
+              }
+            }
+          ],
+          "links": [],
+          "apiConfiguration": {
+            "isEnabled": false,
+            "title": "",
+            "value": ""
+          }
+        },
+        {
+          "chatAssignment": {
+            "logic": "roundRobin",
+            "assignBy": "departments",
+            "teamMembers": [],
+            "departments": [],
+            "doNotassignToOfflineUsers": true,
+            "assignInBusinessHours": false
+          },
+          "aiConfig": {
+            "isSuggestionsEnabled": false,
+            "defaultSuggestions": [
+              ""
+            ],
+            "useHistoryForDefaultSuggestions": false,
+            "suggestionPrompt": ""
+          },
+          "status": "ACTIVE",
+          "label": "If you have any other questions related to Payout, please Click on Submit Details Or need to go back ? Click on Main Menu",
+          "icon": "",
+          "source": "",
+          "example": "",
+          "required": false,
+          "skip": false,
+          "skipIfAnswered": false,
+          "sendNotifications": true,
+          "back": false,
+          "message": {
+            "configureDomains": {
+              "domainAction": "exclude",
+              "selectedDomainsList": [],
+              "domainErrorMessage": "This domain is not Acceptable"
+            },
+            "error": "",
+            "success": "",
+            "unavailable": ""
+          },
+          "minRange": 0,
+          "maxRange": 10,
+          "rangePrefix": "From",
+          "showTime": false,
+          "delay": 1,
+          "rangeSuffix": "To",
+          "rangeStep": 1,
+          "includeInLeads": false,
+          "queriesToHandle": "10",
+          "validation": false,
+          "next": {
+            "type": "",
+            "target": ""
+          },
+          "appointmentHandler": "google",
+          "_id": "672ef663fe777e6a742ac176",
+          "id": "d9cc0fca-af41-46ef-8f06-f840d247335c",
+          "type": "button",
+          "name": "button",
+          "options": [
+            {
+              "actionBasedChatResponse": {
+                "tagIds": [],
+                "status": "OPEN",
+                "isSubscriber": true
+              },
+              "type": "button",
+              "smartKeywords": [],
+              "keywordType": "CONTAIN",
+              "value": "Submit Details",
+              "_id": "672df42d3550526a802c8e8b",
+              "id": "2a0ab446-8fa2-4416-abb4-7adfafcfdff8",
+              "next": {
+                "type": "name",
+                "target": "75604f00-b1d9-4a03-ab81-d1d08b7f85bb"
+              }
+            },
+            {
+              "actionBasedChatResponse": {
+                "tagIds": [],
+                "status": "OPEN",
+                "isSubscriber": true
+              },
+              "type": "button",
+              "smartKeywords": [],
+              "keywordType": "CONTAIN",
+              "value": "Main Menu",
+              "_id": "672df61d3550526a802c8f11",
+              "id": "fd7b5658-046f-4faf-aff3-61933a5742b3",
+              "next": {
+                "type": "button",
+                "target": "0b8a06f4-038b-4046-a11c-f89a6f6992b7"
+              }
+            }
+          ],
+          "links": [],
+          "apiConfiguration": {
+            "isEnabled": false,
+            "title": "",
+            "value": ""
+          }
+        },
+        {
+          "chatAssignment": {
+            "logic": "roundRobin",
+            "assignBy": "departments",
+            "teamMembers": [],
+            "departments": [],
+            "doNotassignToOfflineUsers": true,
+            "assignInBusinessHours": false
+          },
+          "aiConfig": {
+            "isSuggestionsEnabled": false,
+            "defaultSuggestions": [
+              ""
+            ],
+            "useHistoryForDefaultSuggestions": false,
+            "suggestionPrompt": ""
+          },
+          "status": "ACTIVE",
+          "label": "If you have any other questions related to Virtual Account, please Click on Submit Details Or need to go back ? Click on Main Menu",
+          "icon": "",
+          "source": "",
+          "example": "",
+          "required": false,
+          "skip": false,
+          "skipIfAnswered": false,
+          "sendNotifications": true,
+          "back": false,
+          "message": {
+            "configureDomains": {
+              "domainAction": "exclude",
+              "selectedDomainsList": [],
+              "domainErrorMessage": "This domain is not Acceptable"
+            },
+            "error": "",
+            "success": "",
+            "unavailable": ""
+          },
+          "minRange": 0,
+          "maxRange": 10,
+          "rangePrefix": "From",
+          "showTime": false,
+          "delay": 1,
+          "rangeSuffix": "To",
+          "rangeStep": 1,
+          "includeInLeads": false,
+          "queriesToHandle": "10",
+          "validation": false,
+          "next": {
+            "type": "",
+            "target": ""
+          },
+          "appointmentHandler": "google",
+          "_id": "672ef6b73550526a802c9d0e",
+          "id": "d00d2a40-0c52-4329-b865-c739f47df063",
+          "type": "button",
+          "name": "button",
+          "options": [
+            {
+              "actionBasedChatResponse": {
+                "tagIds": [],
+                "status": "OPEN",
+                "isSubscriber": true
+              },
+              "type": "button",
+              "smartKeywords": [],
+              "keywordType": "CONTAIN",
+              "value": "Submit Details",
+              "_id": "672df42d3550526a802c8e8b",
+              "id": "87dce1ce-b16a-40a7-9942-552f11cd24e2",
+              "next": {
+                "type": "name",
+                "target": "75604f00-b1d9-4a03-ab81-d1d08b7f85bb"
+              }
+            },
+            {
+              "actionBasedChatResponse": {
+                "tagIds": [],
+                "status": "OPEN",
+                "isSubscriber": true
+              },
+              "type": "button",
+              "smartKeywords": [],
+              "keywordType": "CONTAIN",
+              "value": "Main Menu",
+              "_id": "672df61d3550526a802c8f11",
+              "id": "48da4cad-c310-494a-83ed-6d503c7749c9",
+              "next": {
+                "type": "button",
+                "target": "0b8a06f4-038b-4046-a11c-f89a6f6992b7"
+              }
+            }
+          ],
+          "links": [],
+          "apiConfiguration": {
+            "isEnabled": false,
+            "title": "",
+            "value": ""
+          }
+        },
+        {
+          "chatAssignment": {
+            "logic": "roundRobin",
+            "assignBy": "departments",
+            "teamMembers": [],
+            "departments": [],
+            "doNotassignToOfflineUsers": true,
+            "assignInBusinessHours": false
+          },
+          "aiConfig": {
+            "isSuggestionsEnabled": false,
+            "defaultSuggestions": [
+              ""
+            ],
+            "useHistoryForDefaultSuggestions": false,
+            "suggestionPrompt": ""
+          },
+          "status": "ACTIVE",
+          "label": "If you have any other questions related to UPI, please Click on Submit Details Or need to go back ? Click on Main Menu",
+          "icon": "",
+          "source": "",
+          "example": "",
+          "required": false,
+          "skip": false,
+          "skipIfAnswered": false,
+          "sendNotifications": true,
+          "back": false,
+          "message": {
+            "configureDomains": {
+              "domainAction": "exclude",
+              "selectedDomainsList": [],
+              "domainErrorMessage": "This domain is not Acceptable"
+            },
+            "error": "",
+            "success": "",
+            "unavailable": ""
+          },
+          "minRange": 0,
+          "maxRange": 10,
+          "rangePrefix": "From",
+          "showTime": false,
+          "delay": 1,
+          "rangeSuffix": "To",
+          "rangeStep": 1,
+          "includeInLeads": false,
+          "queriesToHandle": "10",
+          "validation": false,
+          "next": {
+            "type": "button",
+            "target": "36fc12e5-17cd-4279-b723-cf669293f73a"
+          },
+          "appointmentHandler": "google",
+          "_id": "5f33e8a0dc169947560501ab",
+          "id": "239674cf-57c1-4713-9b33-8655b9c116bb",
+          "type": "contact",
+          "name": "contact",
+          "options": [],
+          "links": [
+            {
+              "type": "link",
+              "title": "click here",
+              "value": "https://viyonafintech.com/upi/",
+              "openInNewTab": true,
+              "_id": "672623ac078ae224ac7c7937",
+              "id": "13ba9346-fc11-4457-9362-a43225bb2f95"
+            }
+          ],
+          "apiConfiguration": {
+            "isEnabled": false,
+            "title": "",
+            "value": ""
+          }
+        },
+        {
+          "chatAssignment": {
+            "logic": "roundRobin",
+            "assignBy": "departments",
+            "teamMembers": [],
+            "departments": [],
+            "doNotassignToOfflineUsers": true,
+            "assignInBusinessHours": false
+          },
+          "aiConfig": {
+            "isSuggestionsEnabled": false,
+            "defaultSuggestions": [
+              ""
+            ],
+            "useHistoryForDefaultSuggestions": false,
+            "suggestionPrompt": ""
+          },
+          "status": "ACTIVE",
+          "label": "Connected Banking Solutions offer businesses the ability to integrate banking services directly into their platforms, providing seamless access to payments, transfers, and account management. This empowers companies to streamline their financial operations and offer enhanced services to their users.\nTo explore how Connected Banking Solutions can transform your business.Enter the back to go  the main menu or submit Details",
+          "icon": "",
+          "source": "",
+          "example": "",
+          "required": false,
+          "skip": false,
+          "skipIfAnswered": false,
+          "sendNotifications": true,
+          "back": false,
+          "message": {
+            "configureDomains": {
+              "domainAction": "exclude",
+              "selectedDomainsList": [],
+              "domainErrorMessage": "This domain is not Acceptable"
+            },
+            "error": "",
+            "success": "",
+            "unavailable": ""
+          },
+          "minRange": 0,
+          "maxRange": 10,
+          "rangePrefix": "From",
+          "showTime": false,
+          "delay": 1,
+          "rangeSuffix": "To",
+          "rangeStep": 1,
+          "includeInLeads": false,
+          "queriesToHandle": "10",
+          "validation": false,
+          "next": {
+            "type": "button",
+            "target": "b9515f64-5fce-47ab-ba0e-14c7410f9c37"
+          },
+          "appointmentHandler": "google",
+          "_id": "5f33e8a0dc169947560501ab",
+          "id": "cc424b39-8b3b-4b0c-8fe3-fbafab62fc84",
+          "type": "contact",
+          "name": "contact",
+          "options": [],
+          "links": [
+            {
+              "type": "link",
+              "title": "click here.",
+              "value": "https://viyonafintech.com/connected-banking/",
+              "openInNewTab": true,
+              "_id": "672623b5078ae224ac7c7939",
+              "id": "8cc61b9c-bf8a-4dff-a6ef-17a88a44026a"
+            }
+          ],
+          "apiConfiguration": {
+            "isEnabled": false,
+            "title": "",
+            "value": ""
+          }
+        },
+        {
+          "chatAssignment": {
+            "logic": "roundRobin",
+            "assignBy": "departments",
+            "teamMembers": [],
+            "departments": [],
+            "doNotassignToOfflineUsers": true,
+            "assignInBusinessHours": false
+          },
+          "aiConfig": {
+            "isSuggestionsEnabled": false,
+            "defaultSuggestions": [
+              ""
+            ],
+            "useHistoryForDefaultSuggestions": false,
+            "suggestionPrompt": ""
+          },
+          "status": "ACTIVE",
+          "label": "We are a leading fintech company focused on providing innovative payment solutions, including PayIn, Payout, UPI, and Connected Banking. Our mission is to revolutionize the way businesses handle payments, offering seamless, secure, and scalable solutions tailored to various industries.\nTo learn more about who we are and what we do.Enter the back to go  the main menu or submit Details",
+          "icon": "",
+          "source": "",
+          "example": "",
+          "required": false,
+          "skip": false,
+          "skipIfAnswered": false,
+          "sendNotifications": true,
+          "back": false,
+          "message": {
+            "configureDomains": {
+              "domainAction": "exclude",
+              "selectedDomainsList": [],
+              "domainErrorMessage": "This domain is not Acceptable"
+            },
+            "error": "",
+            "success": "",
+            "unavailable": ""
+          },
+          "minRange": 0,
+          "maxRange": 10,
+          "rangePrefix": "From",
+          "showTime": false,
+          "delay": 1,
+          "rangeSuffix": "To",
+          "rangeStep": 1,
+          "includeInLeads": false,
+          "queriesToHandle": "10",
+          "validation": false,
+          "next": {
+            "type": "button",
+            "target": "412f291e-46dd-4226-9ff3-d9594a27124e"
+          },
+          "appointmentHandler": "google",
+          "_id": "5f33e8a0dc169947560501ab",
+          "id": "4fe5aef6-2dcc-4aff-bc45-877e06476f81",
+          "type": "contact",
+          "name": "contact",
+          "options": [],
+          "links": [
+            {
+              "type": "link",
+              "title": "click here",
+              "value": "https://viyonafintech.com/about/",
+              "openInNewTab": true,
+              "_id": "672623bc9b60e624a0aadb54",
+              "id": "fbbb9367-c380-4019-ac0f-d75e247faa9f"
+            }
+          ],
+          "apiConfiguration": {
+            "isEnabled": false,
+            "title": "",
+            "value": ""
+          }
+        },
+        {
+          "chatAssignment": {
+            "logic": "roundRobin",
+            "assignBy": "departments",
+            "teamMembers": [],
+            "departments": [],
+            "doNotassignToOfflineUsers": true,
+            "assignInBusinessHours": false
+          },
+          "aiConfig": {
+            "isSuggestionsEnabled": false,
+            "defaultSuggestions": [
+              ""
+            ],
+            "useHistoryForDefaultSuggestions": false,
+            "suggestionPrompt": ""
+          },
+          "status": "ACTIVE",
+          "label": "Join our growing team today!  to explore our available positions.Enter the back to go  the main menu or submit Details",
+          "icon": "",
+          "source": "",
+          "example": "",
+          "required": false,
+          "skip": false,
+          "skipIfAnswered": false,
+          "sendNotifications": true,
+          "back": false,
+          "message": {
+            "configureDomains": {
+              "domainAction": "exclude",
+              "selectedDomainsList": [],
+              "domainErrorMessage": "This domain is not Acceptable"
+            },
+            "error": "",
+            "success": "",
+            "unavailable": ""
+          },
+          "minRange": 0,
+          "maxRange": 10,
+          "rangePrefix": "From",
+          "showTime": false,
+          "delay": 1,
+          "rangeSuffix": "To",
+          "rangeStep": 1,
+          "includeInLeads": false,
+          "queriesToHandle": "10",
+          "validation": false,
+          "next": {
+            "type": "button",
+            "target": "9494fe23-1ccf-452b-afae-19d39c52e06c"
+          },
+          "appointmentHandler": "google",
+          "_id": "5f33e8a0dc169947560501ab",
+          "id": "5658cf00-b514-4ae6-bf03-64312d1ab7b9",
+          "type": "contact",
+          "name": "contact",
+          "options": [],
+          "links": [
+            {
+              "type": "link",
+              "title": "Click here",
+              "value": "https://viyonafintech.com/job-openings/",
+              "openInNewTab": true,
+              "_id": "672623c4078ae224ac7c793b",
+              "id": "e5e3fda5-3d20-4f13-b738-8dee501661d9"
+            }
+          ],
+          "apiConfiguration": {
+            "isEnabled": false,
+            "title": "",
+            "value": ""
+          }
+        },
+        {
+          "chatAssignment": {
+            "logic": "roundRobin",
+            "assignBy": "departments",
+            "teamMembers": [],
+            "departments": [],
+            "doNotassignToOfflineUsers": true,
+            "assignInBusinessHours": false
+          },
+          "aiConfig": {
+            "isSuggestionsEnabled": false,
+            "defaultSuggestions": [
+              ""
+            ],
+            "useHistoryForDefaultSuggestions": false,
+            "suggestionPrompt": ""
+          },
+          "status": "ACTIVE",
+          "label": "If you have any other questions related to Payin, please Click on Submit Details Or need to go back ? Click on Main Menu",
+          "icon": "",
+          "source": "",
+          "example": "",
+          "required": false,
+          "skip": false,
+          "skipIfAnswered": false,
+          "sendNotifications": true,
+          "back": false,
+          "message": {
+            "configureDomains": {
+              "domainAction": "exclude",
+              "selectedDomainsList": [],
+              "domainErrorMessage": "This domain is not Acceptable"
+            },
+            "error": "",
+            "success": "",
+            "unavailable": ""
+          },
+          "minRange": 0,
+          "maxRange": 10,
+          "rangePrefix": "From",
+          "showTime": false,
+          "delay": 1,
+          "rangeSuffix": "To",
+          "rangeStep": 1,
+          "includeInLeads": false,
+          "queriesToHandle": "10",
+          "validation": false,
+          "next": {
+            "type": "",
             "target": ""
           },
           "appointmentHandler": "google",
@@ -1289,8 +1878,6 @@
           "options": [
             {
               "actionBasedChatResponse": {
-                "tagIds": [],
-                "status": "OPEN",
                 "isSubscriber": true
               },
               "type": "button",
@@ -1306,8 +1893,6 @@
             },
             {
               "actionBasedChatResponse": {
-                "tagIds": [],
-                "status": "OPEN",
                 "isSubscriber": true
               },
               "type": "button",
@@ -1388,8 +1973,6 @@
           "options": [
             {
               "actionBasedChatResponse": {
-                "tagIds": [],
-                "status": "OPEN",
                 "isSubscriber": true
               },
               "type": "button",
@@ -1405,8 +1988,6 @@
             },
             {
               "actionBasedChatResponse": {
-                "tagIds": [],
-                "status": "OPEN",
                 "isSubscriber": true
               },
               "type": "button",
@@ -1457,8 +2038,6 @@
           "back": false,
           "message": {
             "configureDomains": {
-              "domainAction": "exclude",
-              "selectedDomainsList": [],
               "domainErrorMessage": "This domain is not Acceptable"
             },
             "error": "",
@@ -1476,6 +2055,7 @@
           "queriesToHandle": "10",
           "validation": false,
           "next": {
+
             "type": "",
             "target": ""
           },
@@ -1487,8 +2067,6 @@
           "options": [
             {
               "actionBasedChatResponse": {
-                "tagIds": [],
-                "status": "OPEN",
                 "isSubscriber": true
               },
               "type": "button",
@@ -1496,7 +2074,7 @@
               "keywordType": "CONTAIN",
               "value": "Submit Details",
               "_id": "672df42d3550526a802c8e8b",
-              "id": "bdb9c8cb-2c3a-49d5-830f-914679b94ec5",
+              "id": "b2e2e1c2-7e2e-4e2e-8e2e-2e2e2e2e2e2e",
               "next": {
                 "type": "name",
                 "target": "75604f00-b1d9-4a03-ab81-d1d08b7f85bb"
@@ -1504,8 +2082,6 @@
             },
             {
               "actionBasedChatResponse": {
-                "tagIds": [],
-                "status": "OPEN",
                 "isSubscriber": true
               },
               "type": "button",
@@ -1513,7 +2089,7 @@
               "keywordType": "CONTAIN",
               "value": "Main Menu",
               "_id": "672df61d3550526a802c8f11",
-              "id": "0a4481d5-853d-437b-9d89-6c5a535e3606",
+              "id": "c2e2e1c2-7e2e-4e2e-8e2e-2e2e2e2e2e2e",
               "next": {
                 "type": "button",
                 "target": "0b8a06f4-038b-4046-a11c-f89a6f6992b7"
@@ -1881,9 +2457,7 @@
           },
           "aiConfig": {
             "isSuggestionsEnabled": false,
-            "defaultSuggestions": [
-              ""
-            ],
+            "defaultSuggestions": [],
             "useHistoryForDefaultSuggestions": false,
             "suggestionPrompt": ""
           },
