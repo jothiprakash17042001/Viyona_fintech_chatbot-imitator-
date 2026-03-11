@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Viyona Fintech Chatbot
 
 A simple Flask-based chatbot demo that drives conversation based on `flow.json`.
@@ -45,3 +46,19 @@ A simple Flask-based chatbot demo that drives conversation based on `flow.json`.
 
 - The chatbot uses a simple JSON flow and matches user input to button values.
 - The UI is hidden by default and is opened by clicking the bot icon.
+=======
+the chatbot to develop the ideas is viyona_fintech chatbot . give the task in create chatbot like this.
+temeplate file is chat.HTML
+statis is Image to save 
+that app.py outer the two file 
+flow.json is company gave the json file 
+
+Viyona_fintech_chatbot-imitator-
+│
+├── app.py
+├── flow.json
+├── logo.png
+│
+└── templates
+     └── chat.html
+>>>>>>> 57e1cf6ef704666cb9521a4fe6715c6590a7d67d
