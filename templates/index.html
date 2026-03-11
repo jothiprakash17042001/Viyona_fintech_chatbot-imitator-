@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Viyona Chatbot</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div id="chatbot-icon">
+<img src="/static/logo.png">
+</div>
+
+<div id="chatbox">
+
+<!-- Header -->
+
+<div class="chat-header">
+
+<div class="header-left">
+<img src="/static/logo1.jpg">
+<div>
+<div class="bot-title">Viyona Bot</div>
+<div class="reply-time">Usual reply time: 2-3 minutes</div>
+</div>
+</div>
+
+<div class="header-actions">
+    <span id="close-chat" title="Close">✕</span>
+</div>
+
+</div>
+
+<!-- Chat messages (includes integrated options now) -->
+<div id="messages"></div>
+
+<!-- Input -->
+
+<div class="chat-input">
+
+<input type="text" id="user-input" placeholder="Type your message...">
+
+<button id="send-btn">Send</button>
+
+</div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

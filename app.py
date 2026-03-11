@@ -1,10 +1,22 @@
 import json
+import sqlite3
+import datetime
 from flask import Flask, request, jsonify, render_template
-import os
+from typing import Dict, Any, Optional, TypedDict
+
+class LeadData(TypedDict, total=False):
+    name: str
+    phone: str
+    email: str
+    question: str
+
+class UserState(TypedDict):
+    node_id: str
+    data: LeadData
 
 app = Flask(__name__)
 
-# Load the chatbot flow
+# Load chatbot flow
 with open("flow.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
@@ -12,96 +24,181 @@ questions = data["intents"]["payload"]["questions"]
 nodes = {node["id"]: node for node in questions}
 start_node_id = "c9c43ba6-91b1-4f35-afae-202ebbb04bd7"
 
-user_states = {}
+# Explicitly type the user_states to satisfy the linter
+user_states: Dict[str, UserState] = {}
 
-def get_next_node_id(node, user_input):
+def init_db():
+    conn = sqlite3.connect("leads.db")
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS leads (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            phone TEXT,
+            email TEXT,
+            question TEXT,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+init_db()
+
+def save_lead(lead_data: Dict[str, Any]):
+    try:
+        conn = sqlite3.connect("leads.db")
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO leads (name, phone, email, question)
+            VALUES (?, ?, ?, ?)
+        ''', (lead_data.get("name"), lead_data.get("phone"), lead_data.get("email"), lead_data.get("question")))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"Error saving lead: {e}")
+        return False
+
+def get_next_node_id(node: Dict[str, Any], user_input: str) -> Optional[str]:
+    normalized = user_input.strip().lower()
+
+    # Allow the user to go back to the start at any time
+    if normalized in {"back", "main menu", "start over"}:
+        return start_node_id
+
     if node.get("type") == "button":
         for option in node.get("options", []):
-            if user_input.strip().lower() == option["value"].strip().lower():
+            if normalized == option["value"].strip().lower():
                 return option["next"]["target"]
-        # If user enters 'Back', and this node has Submit Details and Main Menu, show this node again
-        if user_input.strip().lower() == "back":
-            option_values = [opt["value"].strip().lower() for opt in node.get("options", [])]
-            if "submit details" in option_values and "main menu" in option_values:
-                return node["id"]  # Stay on this node to show Submit and Main Menu
-            # If not, try to find a button node in the flow that has those options
-            for n in nodes.values():
-                if n.get("type") == "button":
-                    values = [opt["value"].strip().lower() for opt in n.get("options", [])]
-                    if "submit details" in values and "main menu" in values:
-                        return n["id"]
-    # Allow free text for name, email, phone, question, etc.
     elif node.get("type") == "email":
-        # After email, show 'submitted' message instead of next node
         return "__EMAIL_SUBMITTED__"
-    elif node.get("type") in ["name", "phone", "question"] and node.get("next") and node["next"].get("target"):
-        return node["next"]["target"]
     elif node.get("next") and node["next"].get("target"):
         return node["next"]["target"]
     return None
 
-def get_options(node):
+def get_options(node: Dict[str, Any]):
     if node.get("type") == "button":
         return [opt["value"] for opt in node.get("options", [])]
     return []
 
-def get_links(node):
-    return node.get("links", []) if node.get("links") else []
+def get_links(node: Dict[str, Any]):
+    if node.get("links"):
+        return node["links"]
+    return []
+
+def get_combined_node_data(node_id: str):
+    node = nodes.get(node_id)
+    if not node:
+        return None, None, [], [], node_id
+    
+    label1 = node.get("label", "")
+    label2 = None
+    options = get_options(node)
+    links = get_links(node)
+    final_node_id = node_id
+    
+    # Auto-forward if it's a statement/contact with no options and has a next target
+    if not options and node.get("type") in {"statement", "contact"}:
+        target = node.get("next", {}).get("target")
+        if target and target in nodes:
+            next_node = nodes[target]
+            label2 = next_node.get("label", "")
+            options = get_options(next_node)
+            links = get_links(next_node)
+            final_node_id = target
+            
+    return label1, label2, options, links, final_node_id
 
 @app.route("/chat", methods=["POST"])
 def chat():
     user_id = request.remote_addr
-    user_input = request.json.get("message", "")
-    current_node_id = user_states.get(user_id, start_node_id)
-    node = nodes.get(current_node_id)
+    # request.json can be None, handled safely
+    json_data = request.json or {}
+    user_input = str(json_data.get("message", "")).strip()
 
-    # Always reset to start node if user_input is empty (on refresh or first load)
-    if not user_input.strip():
+    if user_input == "":
+        label1, label2, options, links, final_id = get_combined_node_data(start_node_id)
+        if not label1:
+            return jsonify({"bot": "Welcome to Viyona Fintech.", "options": ["Start"]})
+            
+        user_states[user_id] = UserState(node_id=final_id, data=LeadData())
+        return jsonify({
+            "bot": label1,
+            "second_line": label2,
+            "options": options,
+            "links": links
+        })
+
+    state = user_states.get(user_id)
+    if not isinstance(state, dict):
+        state = UserState(node_id=start_node_id, data=LeadData())
+        user_states[user_id] = state
+
+    current_node_id = state.get("node_id", start_node_id)
+    node = nodes.get(current_node_id)
+    
+    if not node:
         node = nodes.get(start_node_id)
-        bot_message = node.get("label", "")
-        # Always show the welcome line only
-        options = []
-        links = []
-        next_id = node.get("next", {}).get("target")
-        if next_id and next_id in nodes:
-            next_node = nodes[next_id]
-            user_states[user_id] = next_id
-            print(f"[DEBUG] Node ID: {next_id}, Links: {links}")
-            # Send options of the next node as well
-            return jsonify({
-                "bot": bot_message,  # Only the welcome line
-                "options": get_options(next_node),
-                "links": [],
-                "second_line": next_node.get("label", "")  # Send the second line separately
-            })
-        else:
-            user_states[user_id] = start_node_id
-            print(f"[DEBUG] Node ID: {start_node_id}, Links: {links}")
-            return jsonify({"bot": bot_message, "options": options, "links": links})
+        if not node:
+            return jsonify({"bot": "Session timeout. Please refresh.", "options": []})
+
+    # Store data if current node is a collection node
+    node_type = node.get("type")
+    if node_type in {"name", "phone", "email", "question"}:
+        data_dict = state.get("data")
+        if not isinstance(data_dict, dict):
+            data_dict = {}
+            state["data"] = data_dict
+        data_dict[node_type] = user_input
 
     next_id = get_next_node_id(node, user_input)
-    if next_id == "__EMAIL_SUBMITTED__":
-        user_states[user_id] = start_node_id  # Optionally reset or keep at current
-        print(f"[DEBUG] Node ID: __EMAIL_SUBMITTED__, Links: []")
-        return jsonify({"bot": "“Thank you! Our team will reach out to you soon. Feel free to ask more questions or navigate options enter the back to the reach main menu”", "options": [], "links": []})
-    elif next_id:
-        next_node = nodes.get(next_id)
-        if not next_node:
-            print(f"[ERROR] Node ID {next_id} not found in flow.")
-            return jsonify({"bot": "Sorry, something went wrong. Please try again or contact support.", "options": [], "links": []})
-        bot_message = next_node.get("label", "")
-        options = get_options(next_node)
-        links = get_links(next_node)
-        user_states[user_id] = next_id
-        print(f"[DEBUG] Node ID: {next_id}, Links: {links}")
-        return jsonify({"bot": bot_message, "options": options, "links": links})
-    else:
-        print(f"[DEBUG] Node ID: {current_node_id}, Links: {get_links(node)}")
-        return jsonify({"bot": "Sorry, I didn't understand that.", "options": get_options(node), "links": get_links(node)})
+
+    # Fallback to sequence if target missing
+    if not next_id or next_id not in nodes:
+        node_list = list(nodes.keys())
+        try:
+            curr_idx = node_list.index(current_node_id)
+            if curr_idx + 1 < len(node_list):
+                next_id = node_list[curr_idx + 1]
+        except (ValueError, IndexError):
+            pass
+
+    if next_id and next_id in nodes:
+        label1, label2, options, links, final_id = get_combined_node_data(next_id)
+        
+        # Ensure data is passed along correctly
+        final_data = state.get("data", LeadData())
+        user_states[user_id] = UserState(node_id=final_id, data=final_data)
+        
+        # Save lead if final node
+        next_node = nodes[final_id]
+        label_text = str(next_node.get("label", "")).lower()
+        if "thank you" in label_text:
+            save_lead(final_data)
+            user_states[user_id] = UserState(node_id=start_node_id, data=LeadData())
+
+        # Hide navigation buttons during lead collection steps to keep the space clean
+        if final_id != start_node_id and next_node.get("type") not in {"name", "phone", "email", "question"}:
+            if "Back" not in options: options.append("Back")
+            if "Main Menu" not in options: options.append("Main Menu")
+
+        return jsonify({
+            "bot": label1,
+            "second_line": label2,
+            "options": options,
+            "links": links
+        })
+
+    return jsonify({
+        "bot": "Please select an option or use the Main Menu.",
+        "options": get_options(node) + ["Main Menu"],
+        "links": get_links(node)
+    })
 
 @app.route("/")
 def serve_chat():
-    return render_template("chat.html")
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True)
