@@ -62,3 +62,6 @@ Viyona_fintech_chatbot-imitator-
 └── templates
      └── chat.html
 >>>>>>> 57e1cf6ef704666cb9521a4fe6715c6590a7d67d
+
+<img width="1911" height="950" alt="image" src="https://github.com/user-attachments/assets/75666877-3aed-4ec5-8600-8b72618ecd2b" />
+
