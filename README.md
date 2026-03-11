@@ -3,3 +3,12 @@ temeplate file is chat.HTML
 statis is Image to save 
 that app.py outer the two file 
 flow.json is company gave the json file 
+
+Viyona_fintech_chatbot-imitator-
+│
+├── app.py
+├── flow.json
+├── logo.png
+│
+└── templates
+     └── chat.html
